@@ -24,7 +24,7 @@ jobs:
           enable-cache: true
       - name: Setup virtual environment
         run: |
-          uv venv
+          uv venv --clear
           source .venv/bin/activate
       - name: Install dependencies
         run: |
