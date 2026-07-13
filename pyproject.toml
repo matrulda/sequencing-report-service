@@ -13,29 +13,24 @@ authors =[
     {name = 'SNP&SEQ Technology Platform, Uppsala University'}
 ]
 dependencies = [
-    "alembic==1.8.1",
+    "alembic",
     "arteria==1.1.4",
-    "jsonschema==4.19",
-    "sqlalchemy==1.4.41",
-    "wheel==0.37.1",
+    "jsonschema",
+    "sqlalchemy<2",
+    "tornado",
 ]
 
 [dependency-groups]
 dev = [
-    "alembic==1.8.1",
-    "arteria==1.1.4",
-    "bumpversion==0.6.0",
-    "coverage==7.2.7",
-    "flake8>=7.3.0",
-    "jsonschema==4.19",
-    "mock>=5.2.0",
-    "pytest==7.4.0",
-    "pytest-asyncio==0.21.1",
-    "pytest-runner==6.0.0",
-    "sphinx==5.3.0",
-    "sqlalchemy==1.4.41",
-    "twine==4.0.2",
-    "wheel==0.37.1",
+    "bumpversion",
+    "coverage",
+    "flake8",
+    "mock",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-runner",
+    "sphinx",
+    "twine",
 ]
 
 [tool.setuptools]
