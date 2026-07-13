@@ -6,7 +6,7 @@ import logging
 
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
-from sequencing_report_service.models.db_models import Job, State
+from nextflow_runner_service.models.db_models import Job, State
 
 log = logging.getLogger(__name__)
 

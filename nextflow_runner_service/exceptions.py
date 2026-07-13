@@ -1,13 +1,13 @@
 # pylint: disable=W0107
 # Intentionally disabling unnecessary-pass to allow for otherwise empty exception classes.
 """
-Custom exceptions for sequencing-report-service.
+Custom exceptions for nextflow-runner-service.
 """
 
 
 class SequencingReportBaseException(Exception):
     """
-    Base exception class for sequencing-report-service.
+    Base exception class for nextflow-runner-service.
     """
     pass
 

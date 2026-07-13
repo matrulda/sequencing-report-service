@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sequencing-report-service"
+name = "nextflow-runner-service"
 version = "1.6.0"
 description = "Service producing and displaying sequencing reports."
 readme = "README.md"
@@ -37,7 +37,7 @@ dev = [
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["sequencing_report_service*"]
+include = ["nextflow_runner_service*"]
 
 [project.scripts]
-sequencing-report-service  = "sequencing_report_service.app:start"
+nextflow-runner-service  = "nextflow_runner_service.app:start"

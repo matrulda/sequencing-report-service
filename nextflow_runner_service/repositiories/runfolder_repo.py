@@ -6,7 +6,7 @@ Module for classes and functions related to the identification of runfolders.
 
 from pathlib import Path
 
-from sequencing_report_service.exceptions import ConfigurationError, RunfolderNotFound
+from nextflow_runner_service.exceptions import ConfigurationError, RunfolderNotFound
 
 
 class RunfolderRepository():

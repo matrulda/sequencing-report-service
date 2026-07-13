@@ -12,9 +12,9 @@ import subprocess
 import os
 import signal
 
-from sequencing_report_service.models.db_models import State
-from sequencing_report_service.exceptions import UnableToStopJob
-from sequencing_report_service.nextflow import nextflow_command
+from nextflow_runner_service.models.db_models import State
+from nextflow_runner_service.exceptions import UnableToStopJob
+from nextflow_runner_service.nextflow import nextflow_command
 
 log = logging.getLogger(__name__)
 

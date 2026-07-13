@@ -1,8 +1,8 @@
 import contextlib
 import mock
 
-from sequencing_report_service.repositiories.job_repo import JobRepository
-from sequencing_report_service.models.db_models import Job, State
+from nextflow_runner_service.repositiories.job_repo import JobRepository
+from nextflow_runner_service.models.db_models import Job, State
 
 
 class MockJobRepository():
