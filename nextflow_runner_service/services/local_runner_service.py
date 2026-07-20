@@ -11,13 +11,10 @@ import logging
 import subprocess
 import os
 import signal
-import shlex
 
-from tornado.process import Subprocess
-
-from sequencing_report_service.models.db_models import State
-from sequencing_report_service.exceptions import UnableToStopJob
-from sequencing_report_service.nextflow import nextflow_command
+from nextflow_runner_service.models.db_models import State
+from nextflow_runner_service.exceptions import UnableToStopJob
+from nextflow_runner_service.nextflow import nextflow_command
 
 log = logging.getLogger(__name__)
 
@@ -61,34 +58,38 @@ class LocalRunnerService:
             sys_env = os.environ.copy() or {}
             job_env = job.environment or {}
             env = {**sys_env, **job_env}
-            cmd = shlex.split(shlex.quote(" ".join(job.command)))
+            cmd = " ".join(job.command)
 
             try:
                 with open(nxf_log, "w", encoding="utf-8") as nxf_log_fh:
                     log.debug("Will start command %s", cmd)
-                    process = Subprocess(
+                    process = await asyncio.create_subprocess_shell(
                         cmd,
                         stdout=nxf_log_fh,
                         stderr=nxf_log_fh,
                         env=env,
                         cwd=working_dir,
-                        shell=True,
                     )
 
                     job_repo.set_state_of_job(job_id=job.job_id, state=State.STARTED)
                     job_repo.set_pid_of_job(job.job_id, process.pid)
 
-                    await process.wait_for_exit()
+                    return_code = await process.wait()
 
                 with open(nxf_log, encoding="utf-8") as log_file:
                     cmd_log = log_file.read()
 
-                log.info("Successfully completed process: %s", job.command)
-                job_repo.set_state_of_job(
-                    job_id=job.job_id,
-                    state=State.DONE,
-                    cmd_log=cmd_log,
-                )
+                if return_code == 0:
+                    log.info("Successfully completed process: %s", job.command)
+                    job_repo.set_state_of_job(
+                        job_id=job.job_id,
+                        state=State.DONE,
+                        cmd_log=cmd_log,
+                    )
+                else:
+                    log.error(f"Process for job {job_id} failed with return code {process.returncode}. Check job log for details.")
+                    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+
             except subprocess.CalledProcessError:
                 job = job_repo.get_job(job_id)
                 if job.state == State.CANCELLED:

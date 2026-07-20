@@ -1,7 +1,7 @@
 Sequencing Report Service
 =========================
 
-Service used to start nextflow pipelines with passed config variables 
+Service used to start nextflow pipelines with passed config variables
 
 How to configure pipelines
 --------------------------
@@ -78,16 +78,23 @@ input_samplesheet_content: |
 ```
 
 
-Installing sequencing-report-service
+Installing nextflow-runner-service
 ----------------
-1. Clone the repo
+1. Clone the repo and enter it
 
 2. Install the project and it's dependencies
 We use [UV](https://docs.astral.sh/uv/) project manager i.e
 ```bash
 uv sync --all-groups --locked   # this will also create a venv that can be ativated by 'source .venv/bin/activate'
 ```
-Look at example of using  UV in the 'Local Development' section below
+See more examples of using UV in the 'Local Development' section below
+
+Starting nextflow-runner-service
+----------------
+After activating the virtual env, the service can be started with the following command:
+```bash
+nextflow-runner-service --configroot=config --port 8888
+```
 
 
 Local Development
@@ -104,7 +111,7 @@ pip install uv
 
 2. Create and activate virtual environment:
 ```bash
-uv venv
+uv venv --python 3.14
 source .venv/bin/activate  # On Unix/macOS
 ```
 
@@ -126,10 +133,16 @@ uv add <'package'>  # Add dependencies to the project and added to the project's
 uv remove <'package'>  # Removes dependencies in the project and removes in the project's pyproject.toml file.
 ```
 
+#### Running tests
+Tests can be executed by running:
+```bash
+pytest tests
+```
+
 #### Dependency Locking
 
 We use UV's lockfile functionality to ensure reproducible builds:
-NOTE: `uv add` and `uv remove` usually edit both pyproject.toml and uv.lock but 
+NOTE: `uv add` and `uv remove` usually edit both pyproject.toml and uv.lock but
 one can run the command below if you delete the lock file to regenerate
 
 1. Generate/update lockfile:
@@ -137,4 +150,4 @@ one can run the command below if you delete the lock file to regenerate
 uv lock
 ```
 
-Sequencing-report-service project *version* is documented in the ```pyproject.toml``` file and should be updated there to match the releases.
+nextflow-runner-service project *version* is documented in the ```pyproject.toml``` file and should be updated there to match the releases.

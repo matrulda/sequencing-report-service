@@ -7,7 +7,7 @@ import yaml
 import pytest
 import jsonschema
 
-from sequencing_report_service.nextflow import *
+from nextflow_runner_service.nextflow import *
 
 
 @pytest.fixture()

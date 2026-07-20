@@ -12,8 +12,8 @@ from tornado.web import StaticFileHandler, HTTPError
 
 from arteria.web.handlers import BaseRestHandler
 
-from sequencing_report_service.handlers import NOT_FOUND
-from sequencing_report_service.exceptions import RunfolderNotFound
+from nextflow_runner_service.handlers import NOT_FOUND
+from nextflow_runner_service.exceptions import RunfolderNotFound
 
 
 class ReportsHandler(BaseRestHandler):

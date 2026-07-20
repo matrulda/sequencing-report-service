@@ -8,13 +8,13 @@ from tornado.web import Application
 
 import mock
 
-from sequencing_report_service.app import routes
-from sequencing_report_service.services.local_runner_service import LocalRunnerService
-from sequencing_report_service.repositiories.runfolder_repo import RunfolderRepository
-from sequencing_report_service.models.db_models import Job, State
+from nextflow_runner_service.app import routes
+from nextflow_runner_service.services.local_runner_service import LocalRunnerService
+from nextflow_runner_service.repositiories.runfolder_repo import RunfolderRepository
+from nextflow_runner_service.models.db_models import Job, State
 import importlib.metadata
 
-version = importlib.metadata.version("sequencing-report-service")
+version = importlib.metadata.version("nextflow-runner-service")
 
 
 class TestJobHandler(AsyncHTTPTestCase):

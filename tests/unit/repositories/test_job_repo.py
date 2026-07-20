@@ -5,8 +5,8 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 import pytest
 
-from sequencing_report_service.models.db_models import SQLAlchemyBase, State
-from sequencing_report_service.repositiories.job_repo import JobRepository
+from nextflow_runner_service.models.db_models import SQLAlchemyBase, State
+from nextflow_runner_service.repositiories.job_repo import JobRepository
 
 
 class TestJobRepo(object):

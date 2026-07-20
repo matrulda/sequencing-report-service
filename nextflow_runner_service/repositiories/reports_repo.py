@@ -8,7 +8,7 @@ from queue import Queue
 import dataclasses
 
 
-from sequencing_report_service.exceptions import RunfolderNotFound
+from nextflow_runner_service.exceptions import RunfolderNotFound
 
 
 log = logging.getLogger(__name__)

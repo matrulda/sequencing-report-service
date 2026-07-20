@@ -9,7 +9,7 @@ from arteria.web.handlers import BaseRestHandler
 
 import importlib.metadata
 
-version = importlib.metadata.version("sequencing-report-service")
+version = importlib.metadata.version("nextflow-runner-service")
 
 
 class VersionHandler(BaseRestHandler):

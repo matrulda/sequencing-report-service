@@ -12,12 +12,12 @@ from arteria.web.app import AppService
 from tornado.testing import AsyncHTTPTestCase, gen_test
 from tornado.web import Application
 
-from sequencing_report_service.app import configure_routes
-from sequencing_report_service.models.db_models import State
+from nextflow_runner_service.app import configure_routes
+from nextflow_runner_service.models.db_models import State
 
 import importlib.metadata
 
-version = importlib.metadata.version("sequencing-report-service")
+version = importlib.metadata.version("nextflow-runner-service")
 
 
 class TestIntegration(AsyncHTTPTestCase):
@@ -266,7 +266,7 @@ class TestIntegration(AsyncHTTPTestCase):
             "socks_samplesheet_samplesheet.csv"
             in " ".join(status_response_body["command"])
         )
-    
+
     def test_start_job_with_demultiplexer(self):
         body = {
             "config_parameters": {"demultiplexer": "bclconvert"}

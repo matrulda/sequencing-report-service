@@ -17,15 +17,15 @@ from arteria.web.app import AppService
 from alembic.config import Config as AlembicConfig
 from alembic.command import upgrade as upgrade_db
 
-from sequencing_report_service.handlers.version_handler import VersionHandler
-from sequencing_report_service.handlers.job_handler import OneJobHandler, ManyJobHandler,\
+from nextflow_runner_service.handlers.version_handler import VersionHandler
+from nextflow_runner_service.handlers.job_handler import OneJobHandler, ManyJobHandler,\
     JobStartHandler, JobStopHandler
-from sequencing_report_service.handlers.reports_handler import ReportFileHandler, ReportsHandler
-from sequencing_report_service.services.local_runner_service import LocalRunnerService
-from sequencing_report_service.repositiories.job_repo import JobRepository
-from sequencing_report_service.repositiories.reports_repo import ReportsRepository
-from sequencing_report_service.repositiories.runfolder_repo import RunfolderRepository
-from sequencing_report_service.exceptions import ConfigurationError
+from nextflow_runner_service.handlers.reports_handler import ReportFileHandler, ReportsHandler
+from nextflow_runner_service.services.local_runner_service import LocalRunnerService
+from nextflow_runner_service.repositiories.job_repo import JobRepository
+from nextflow_runner_service.repositiories.reports_repo import ReportsRepository
+from nextflow_runner_service.repositiories.runfolder_repo import RunfolderRepository
+from nextflow_runner_service.exceptions import ConfigurationError
 
 log = logging.getLogger(__name__)
 

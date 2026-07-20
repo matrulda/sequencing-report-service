@@ -6,7 +6,7 @@ import logging
 
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
-from sequencing_report_service.models.db_models import Job, State
+from nextflow_runner_service.models.db_models import Job, State
 
 log = logging.getLogger(__name__)
 
@@ -80,7 +80,7 @@ class JobRepository:
         :param job_id:
         :return: a Job, or None if it does not exist
         """
-        return self.session.query(Job).get(job_id)
+        return self.session.get(Job, job_id)
 
     def get_one_pending_job(self):
         """
@@ -108,7 +108,7 @@ class JobRepository:
         :param cmd_log: Optionally add log for the job
         :return: The job which state was changed, or none if no (or multiple) jobs with id were found.
         """
-        job = self.session.query(Job).get(job_id)
+        job = self.session.get(Job, job_id)
 
         if not job:
             log.error("Found no job with id: %s.", job_id)
@@ -128,7 +128,7 @@ class JobRepository:
         :param pid: to set
         :return: the Job changed or None if no job was found
         """
-        job = self.session.query(Job).get(job_id)
+        job = self.session.get(Job, job_id)
 
         if not job:
             log.error("Found no job with id: %s.", job_id)

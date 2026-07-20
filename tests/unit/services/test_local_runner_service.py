@@ -8,8 +8,8 @@ import time
 
 import pytest
 
-from sequencing_report_service.services.local_runner_service import LocalRunnerService
-from sequencing_report_service.models.db_models import Job, State
+from nextflow_runner_service.services.local_runner_service import LocalRunnerService
+from nextflow_runner_service.models.db_models import Job, State
 
 from tests.test_utils import MockJobRepository
 
@@ -29,7 +29,7 @@ class TestLocalRunnerService(object):
 
     @pytest.mark.asyncio
     @mock.patch(
-        "sequencing_report_service.services.local_runner_service.nextflow_command",
+        "nextflow_runner_service.services.local_runner_service.nextflow_command",
         return_value={
             "command": ["nextflow", "run", "socks"],
             "environment": {},
@@ -56,7 +56,7 @@ class TestLocalRunnerService(object):
 
     @pytest.mark.asyncio
     @mock.patch(
-        "sequencing_report_service.services.local_runner_service.nextflow_command",
+        "nextflow_runner_service.services.local_runner_service.nextflow_command",
         return_value={
             "command": ["nextflow", "run", "socks"],
             "environment": {},
