@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nextflow-runner-service"
-version = "2.0.0-rc1"
+version = "2.0.0-rc2"
 description = "Service starting configured nextflow pipelines."
 readme = "README.md"
 requires-python = ">=3.13"
